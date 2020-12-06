@@ -5,9 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.mindorks.bootcamp.instagram.data.repository.UserRepository
 import com.mindorks.bootcamp.instagram.ui.base.BaseViewModel
-import com.mindorks.bootcamp.instagram.utils.common.Event
-import com.mindorks.bootcamp.instagram.utils.common.Resource
-import com.mindorks.bootcamp.instagram.utils.common.Validation
+import com.mindorks.bootcamp.instagram.utils.common.*
 import com.mindorks.bootcamp.instagram.utils.network.NetworkHelper
 import com.mindorks.bootcamp.instagram.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
@@ -38,5 +36,39 @@ class LoginViewModel(
 
     override fun onCreate() {
 
+    }
+
+    fun onEmailChange(email: String) = emailField.postValue(email)
+
+    fun onPasswordChange(password: String) = passwordField.postValue(password)
+
+    fun onLogin() {
+        val email = emailField.value
+        val password = emailField.value
+
+        val validations = Validator.validateLoginFields(email, password)
+        validationList.postValue(validations)
+
+        if (validations.isNotEmpty() && email != null && password != null) {
+            val successValidation = validations.filter { it.resource.status == Status.SUCCESS }
+            if (successValidation.size == validations.size && checkInternetConnectionWithMessage()){
+                loggingIn.postValue(true)
+                compositeDisposable.addAll(
+                    userRepository.doUserLogin(email, password)
+                        .subscribeOn(schedulerProvider.io())
+                        .subscribe(
+                            {
+                                userRepository.saveCurrentUser(it)
+                                loggingIn.postValue(false)
+                                launchDummy.postValue(Event(emptyMap()))
+                            },
+                            {
+                                handleNetworkError(it)
+                                loggingIn.postValue(false)
+                            }
+                        )
+                )
+            }
+        }
     }
 }

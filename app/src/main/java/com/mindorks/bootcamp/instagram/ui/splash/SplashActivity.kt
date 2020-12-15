@@ -7,6 +7,7 @@ import com.mindorks.bootcamp.instagram.R
 import com.mindorks.bootcamp.instagram.di.component.ActivityComponent
 import com.mindorks.bootcamp.instagram.ui.base.BaseActivity
 import com.mindorks.bootcamp.instagram.ui.dummy.DummyActivity
+import com.mindorks.bootcamp.instagram.ui.login.LoginActivity
 import com.mindorks.bootcamp.instagram.utils.common.Event
 
 class SplashActivity : BaseActivity<SplashViewModel>() {
@@ -30,6 +31,12 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
         viewModel.launchDummy.observe(this, Observer<Event<Map<String, String>>> {
             it.getIfNotHandled()?.run {
                 startActivity(Intent(applicationContext, DummyActivity::class.java))
+            }
+        })
+
+        viewModel.launchLogin.observe(this, Observer<Event<Map<String, String>>> {
+            it.getIfNotHandled()?.run {
+                startActivity(Intent(applicationContext, LoginActivity::class.java))
             }
         })
     }

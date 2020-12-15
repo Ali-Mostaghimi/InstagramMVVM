@@ -44,7 +44,7 @@
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:lines="1"
             android:maxLength="250"
             android:textSize="16sp" />

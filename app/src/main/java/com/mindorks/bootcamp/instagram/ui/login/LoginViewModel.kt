@@ -44,7 +44,7 @@ class LoginViewModel(
 
     fun onLogin() {
         val email = emailField.value
-        val password = emailField.value
+        val password = passwordField.value
 
         val validations = Validator.validateLoginFields(email, password)
         validationList.postValue(validations)

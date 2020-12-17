@@ -33,6 +33,9 @@ android {
             buildConfigField("String", "API_KEY", "\"HBNA19QVVAPP\"")
         }
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {

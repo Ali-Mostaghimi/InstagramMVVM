@@ -34,4 +34,9 @@
     <string name="signUp_or_textView_text">@string/login_or_textView_text</string>
     <string name="signUp_login_textView_text">Login with Email</string>
 
+    <!--menu-->
+    <string name="menu_home">Home</string>
+    <string name="menu_add_photo">Add Photos</string>
+    <string name="menu_profile">Profile</string>
+
 </resources>

@@ -10,7 +10,7 @@
     <string name="network_login_again">Please log in again</string>
 
 
-   <!--login-->
+    <!--login-->
     <string name="login_email_field_hint">Enter your email</string>
     <string name="login_password_field_hint">Enter your password</string>
     <string name="login_email_field_empty">Email can\'t be empty</string>
@@ -38,5 +38,8 @@
     <string name="menu_home">Home</string>
     <string name="menu_add_photo">Add Photos</string>
     <string name="menu_profile">Profile</string>
+
+    <!--posts-->
+    <string name="post_like_label">%1d Likes</string>
 
 </resources>

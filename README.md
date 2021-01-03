@@ -1,5 +1,5 @@
 # instagramMVVM
-This is a project like instagram for learning new technologies in android.
+This is a project like instagram for practicing new technologies in android.
 
 * This project is under the development
 

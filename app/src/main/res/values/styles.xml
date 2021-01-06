@@ -41,6 +41,7 @@
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:textColorPrimary">@color/black</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -51,6 +52,7 @@
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/black</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
     <style name="AppTheme.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
@@ -125,6 +127,15 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+    <style name="AppTheme.EditProfile.TextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="hintTextColor">@color/grey</item>
+    </style>
+
+    <style name="AppTheme.EditProfile.EditText" parent="Widget.AppCompat.EditText">
+        <item name="backgroundTint">@color/grey</item>
+        <item name="android:textColorHint">@color/grey</item>
     </style>
 
 </resources>

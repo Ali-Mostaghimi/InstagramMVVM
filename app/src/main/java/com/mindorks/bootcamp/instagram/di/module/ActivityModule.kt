@@ -8,6 +8,7 @@ import com.mindorks.bootcamp.instagram.ui.base.BaseActivity
 import com.mindorks.bootcamp.instagram.ui.dummy.DummyViewModel
 import com.mindorks.bootcamp.instagram.ui.login.LoginViewModel
 import com.mindorks.bootcamp.instagram.ui.main.MainViewModel
+import com.mindorks.bootcamp.instagram.ui.profile.editProfile.EditProfileViewModel
 import com.mindorks.bootcamp.instagram.ui.signup.SignUpViewModel
 import com.mindorks.bootcamp.instagram.ui.splash.SplashViewModel
 import com.mindorks.bootcamp.instagram.utils.ViewModelProviderFactory
@@ -84,4 +85,14 @@ class ActivityModule(private val activity: BaseActivity<*>) {
             MainViewModel(schedulerProvider, compositeDisposable, networkHelper)
         }).get(MainViewModel::class.java)
 
+
+    @Provides
+    fun provideEditProfileViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper
+    ): EditProfileViewModel = ViewModelProviders.of(
+        activity, ViewModelProviderFactory(EditProfileViewModel::class) {
+            EditProfileViewModel(schedulerProvider, compositeDisposable, networkHelper)
+        }).get(EditProfileViewModel::class.java)
 }

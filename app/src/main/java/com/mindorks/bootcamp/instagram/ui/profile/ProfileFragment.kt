@@ -1,11 +1,14 @@
 package com.mindorks.bootcamp.instagram.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.mindorks.bootcamp.instagram.R
 import com.mindorks.bootcamp.instagram.di.component.FragmentComponent
 import com.mindorks.bootcamp.instagram.ui.base.BaseFragment
 import com.mindorks.bootcamp.instagram.ui.photo.PhotoViewModel
+import com.mindorks.bootcamp.instagram.ui.profile.editProfile.EditProfileActivity
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment: BaseFragment<PhotoViewModel>() {
 
@@ -27,6 +30,8 @@ class ProfileFragment: BaseFragment<PhotoViewModel>() {
     }
 
     override fun setupView(view: View) {
-
+        profile_tv_editProfile.setOnClickListener{
+            startActivity(Intent(activity, EditProfileActivity::class.java))
+        }
     }
 }

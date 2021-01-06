@@ -42,4 +42,18 @@
     <!--posts-->
     <string name="post_like_label">%1d Likes</string>
 
+    <!--profile-->
+    <string name="post_count_label">%d Posts</string>
+    <string name="profile_post_label">Posts</string>
+    <string name="profile_EditProfile_text">Edit Profile</string>
+    <string name="profile_logout_text">Logout</string>
+    <string name="editProfile_toolbar_title">Edit Profile</string>
+    <string name="editProfile_menuItem_confirm_contentDescription">Confirm</string>
+    <string name="editProfile_menuItem_confirm_title">Confirm</string>
+    <string name="editProfile_tvChangePhoto_text">Change Photo</string>
+    <string name="editProfile_etName_hint">Name</string>
+    <string name="editProfile_etBio_hint">Bio</string>
+    <string name="editProfile_tvPrivateInformation_text">Private Information</string>
+    <string name="editProfile_etEmailAddress_hint">Email Address</string>
+
 </resources>

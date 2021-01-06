@@ -1,19 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <ImageView
+        android:id="@+id/profile_iv_profile"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:scaleType="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_tv_logout"
+        app:srcCompat="@drawable/ic_profile_placeholder"
+        tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/profile_tv_postCount"
+        style="@style/AppTheme.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Profile Fragment"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:lines="1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/profile_tv_editProfile"
+        app:layout_constraintStart_toStartOf="@+id/profile_tv_editProfile"
+        tools:text="10" />
+
+    <TextView
+        android:id="@+id/profile_tv_postLabel"
+        style="@style/AppTheme.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:text="@string/profile_post_label"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_tv_postCount"
+        app:layout_constraintStart_toEndOf="@+id/profile_tv_postCount"
+        app:layout_constraintTop_toTopOf="@+id/profile_tv_postCount" />
+
+    <TextView
+        android:id="@+id/profile_tv_editProfile"
+        style="@style/AppTheme.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/grey_stroke_background"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="1dp"
+        android:text="@string/profile_EditProfile_text"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_iv_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profile_iv_profile" />
+
+
+    <TextView
+        android:id="@+id/profile_tv_logout"
+        style="@style/AppTheme.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/profile_logout_text"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profile_tv_name"
+        style="@style/AppTheme.Headline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:lines="1"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/profile_iv_profile"
+        app:layout_constraintTop_toBottomOf="@+id/profile_iv_profile"
+        tools:text="Ali Mostaghimi" />
+
+    <TextView
+        android:id="@+id/profile_tv_bio"
+        style="@style/AppTheme.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_tv_name"
+        tools:text="I'm Android Developer. I love musics and football. I try to be a better person in world." />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

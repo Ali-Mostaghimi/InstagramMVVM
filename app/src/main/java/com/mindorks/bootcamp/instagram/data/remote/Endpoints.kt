@@ -8,4 +8,6 @@ object Endpoints {
     const val HOME_POST_LIST = "instagram/post/list"
     const val POST_LIKE = "instagram/post/like"
     const val POST_UNLIKE = "instagram/post/unlike"
+    const val UPLOAD_IMAGE = "image"
+    const val CREATE_POST = "instagram/post"
 }

@@ -56,4 +56,9 @@
     <string name="editProfile_tvPrivateInformation_text">Private Information</string>
     <string name="editProfile_etEmailAddress_hint">Email Address</string>
 
+<!--photo-->
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="try_again">Please try again</string>
+
 </resources>

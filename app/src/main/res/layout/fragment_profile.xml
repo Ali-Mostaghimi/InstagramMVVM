@@ -72,7 +72,7 @@
         android:text="@string/profile_logout_text"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_pb_loading" />
 
     <TextView
         android:id="@+id/profile_tv_name"
@@ -98,5 +98,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_tv_name"
         tools:text="I'm Android Developer. I love musics and football. I try to be a better person in world." />
+
+    <ProgressBar
+        android:id="@+id/profile_pb_loading"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:visibility="gone"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

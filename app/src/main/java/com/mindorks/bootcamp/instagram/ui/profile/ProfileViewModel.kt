@@ -75,6 +75,7 @@ class ProfileViewModel(
                     .subscribeOn(schedulerProvider.io())
                     .subscribe(
                         {
+                            userRepository.removeCurrentUser()
                             loading.postValue(false)
                             loggedOut.postValue(Resource.success(true))
                         },

@@ -2,10 +2,7 @@ package com.mindorks.bootcamp.instagram.di.module
 
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mindorks.bootcamp.instagram.data.repository.DummyRepository
-import com.mindorks.bootcamp.instagram.data.repository.PhotoRepository
-import com.mindorks.bootcamp.instagram.data.repository.PostRepository
-import com.mindorks.bootcamp.instagram.data.repository.UserRepository
+import com.mindorks.bootcamp.instagram.data.repository.*
 import com.mindorks.bootcamp.instagram.di.TempDirectory
 import com.mindorks.bootcamp.instagram.ui.base.BaseFragment
 import com.mindorks.bootcamp.instagram.ui.dummies.DummiesAdapter
@@ -86,7 +83,8 @@ class FragmentModule(private val fragment: BaseFragment<*>) {
             ViewModelProviderFactory(PhotoViewModel::class) {
                 PhotoViewModel(
                     schedulerProvider, compositeDisposable, networkHelper,
-                    userRepository, photoRepository, postRepository, directory)
+                    userRepository, photoRepository, postRepository, directory
+                )
             }
         ).get(PhotoViewModel::class.java)
 
@@ -94,11 +92,19 @@ class FragmentModule(private val fragment: BaseFragment<*>) {
     fun provideProfileViewModel(
         schedulerProvider: SchedulerProvider,
         compositeDisposable: CompositeDisposable,
-        networkHelper: NetworkHelper
+        networkHelper: NetworkHelper,
+        userRepository: UserRepository,
+        myInfoRepository: MyInfoRepository
     ): ProfileViewModel =
         ViewModelProviders.of(fragment,
             ViewModelProviderFactory(ProfileViewModel::class) {
-                ProfileViewModel(schedulerProvider, compositeDisposable, networkHelper)
+                ProfileViewModel(
+                    schedulerProvider,
+                    compositeDisposable,
+                    networkHelper,
+                    userRepository,
+                    myInfoRepository
+                )
             }
         ).get(ProfileViewModel::class.java)
 

@@ -10,4 +10,6 @@ object Endpoints {
     const val POST_UNLIKE = "instagram/post/unlike"
     const val UPLOAD_IMAGE = "image"
     const val CREATE_POST = "instagram/post"
+    const val LOGOUT = "logout"
+    const val MY_INFO = "me"
 }

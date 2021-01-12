@@ -67,4 +67,10 @@ class UserRepository @Inject constructor(
                     it.profilePicUrl
                 )
             }
+
+    fun doLogout(user: User): Single<Boolean> =
+        networkService.doLogoutCall(user.id, user.accessToken)
+            .map {
+                true
+            }
 }

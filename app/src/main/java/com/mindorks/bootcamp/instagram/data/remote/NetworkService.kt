@@ -1,5 +1,6 @@
 package com.mindorks.bootcamp.instagram.data.remote
 
+import com.mindorks.bootcamp.instagram.data.model.MyInfo
 import com.mindorks.bootcamp.instagram.data.remote.request.*
 import com.mindorks.bootcamp.instagram.data.remote.response.*
 import io.reactivex.Single
@@ -88,7 +89,7 @@ interface NetworkService {
         @Header(Networking.HEADER_USER_ID) userId: String,
         @Header(Networking.HEADER_ACCESS_TOKEN) accessToken: String,
         @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
-    ): Single<GeneralResponse>
+    ): Single<LogoutResponse>
 
     @GET(Endpoints.MY_INFO)
     fun doMyInfoCall(
@@ -99,11 +100,11 @@ interface NetworkService {
 
     @PUT(Endpoints.MY_INFO)
     fun doUpdateMyInfoCall(
-        @Body request: UpdateMyInfoRequest,
+        @Body request: MyInfo,
         @Header(Networking.HEADER_USER_ID) userId: String,
         @Header(Networking.HEADER_ACCESS_TOKEN) accessToken: String,
         @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
-    ): Single<GeneralResponse>
+    ): Single<UpdateMyInfoResponse>
 
 
 }

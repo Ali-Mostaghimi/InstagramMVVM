@@ -138,4 +138,8 @@
         <item name="android:textColorHint">@color/grey</item>
     </style>
 
+    <style name="AppTheme.ProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">#A5A5A5</item>
+    </style>
+
 </resources>

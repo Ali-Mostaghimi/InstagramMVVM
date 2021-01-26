@@ -1,5 +1,6 @@
 package com.mindorks.bootcamp.instagram.ui.profile
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -8,21 +9,22 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mindorks.bootcamp.instagram.R
+import com.mindorks.bootcamp.instagram.data.model.MyInfo
 import com.mindorks.bootcamp.instagram.di.component.FragmentComponent
 import com.mindorks.bootcamp.instagram.ui.base.BaseFragment
 import com.mindorks.bootcamp.instagram.ui.login.LoginActivity
-import com.mindorks.bootcamp.instagram.ui.photo.PhotoViewModel
 import com.mindorks.bootcamp.instagram.ui.profile.editProfile.EditProfileActivity
 import com.mindorks.bootcamp.instagram.utils.common.GlideHelper
 import com.mindorks.bootcamp.instagram.utils.common.Status
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.item_view_post.view.*
+import javax.inject.Inject
 
 class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
     companion object {
         const val TAG = "ProfileFragment"
-
+        const val UPDATE_MYINFO_REQUEST = 1005
         fun newInstance(): ProfileFragment {
             val args = Bundle()
             val fragment = ProfileFragment()
@@ -61,7 +63,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
         })
 
         viewModel.lunchEditProfile.observe(this, Observer {
-            startActivity(Intent(activity, EditProfileActivity::class.java))
+            startActivityForResult(
+                Intent(activity, EditProfileActivity::class.java),
+                UPDATE_MYINFO_REQUEST
+            )
         })
 
         viewModel.name.observe(this, Observer {
@@ -74,25 +79,40 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
         viewModel.profileImage.observe(this, Observer {
             it?.run {
-                val glideRequest = Glide
-                    .with(profile_iv_profile.context)
-                    .load(GlideHelper.getProtectedUrl(url, headers))
-                    .apply(RequestOptions.circleCropTransform())
-                    .apply(RequestOptions.placeholderOf(R.drawable.ic_profile_placeholder))
+                if (this.url.isNotEmpty()) {
+                    val glideRequest = Glide
+                        .with(profile_iv_profile.context)
+                        .load(GlideHelper.getProtectedUrl(url, headers))
+                        .apply(RequestOptions.circleCropTransform())
+                        .apply(RequestOptions.placeholderOf(R.drawable.ic_profile_placeholder))
 
-                if (placeholderWidth > 0 && placeholderHeight > 0) {
-                    val params = profile_iv_profile.layoutParams as ViewGroup.LayoutParams
-                    params.width = placeholderWidth
-                    params.height = placeholderHeight
-                    profile_iv_profile.layoutParams = params
-                    glideRequest
-                        .apply(RequestOptions.overrideOf(placeholderWidth, placeholderHeight))
-                        .apply(RequestOptions.placeholderOf(R.drawable.ic_photo))
+                    if (placeholderWidth > 0 && placeholderHeight > 0) {
+                        val params = profile_iv_profile.layoutParams as ViewGroup.LayoutParams
+                        params.width = placeholderWidth
+                        params.height = placeholderHeight
+                        profile_iv_profile.layoutParams = params
+                        glideRequest
+                            .apply(RequestOptions.overrideOf(placeholderWidth, placeholderHeight))
+                            .apply(RequestOptions.placeholderOf(R.drawable.ic_profile_placeholder))
+                    }
+                    glideRequest.into(profile_iv_profile)
                 }
-                glideRequest.into(profile_iv_profile)
             }
         })
+    }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == UPDATE_MYINFO_REQUEST) {
+                viewModel.onMyInfoUpdated(
+                    MyInfo(
+                        data?.getStringExtra(EditProfileActivity.MYINFO_NAME_PARAM).orEmpty(),
+                        data?.getStringExtra(EditProfileActivity.MYINFO_PROFILE_PIC_URL_PARAM),
+                        data?.getStringExtra(EditProfileActivity.MYINFO_TAGLINE_PARAM)
+                    )
+                )
+            }
+        }
     }
 }

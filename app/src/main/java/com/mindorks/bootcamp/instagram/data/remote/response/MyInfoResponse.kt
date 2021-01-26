@@ -31,10 +31,10 @@ data class MyInfoResponse(
 
         @Expose
         @SerializedName("profilePicUrl")
-        val profilePicUrl: String,
+        val profilePicUrl: String?,
 
         @Expose
         @SerializedName("tagline")
-        val tagline: String
+        val tagline: String?
     )
 }

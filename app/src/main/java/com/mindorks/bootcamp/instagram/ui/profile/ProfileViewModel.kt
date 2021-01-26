@@ -8,7 +8,6 @@ import com.mindorks.bootcamp.instagram.data.model.MyInfo
 import com.mindorks.bootcamp.instagram.data.model.User
 import com.mindorks.bootcamp.instagram.data.remote.Networking
 import com.mindorks.bootcamp.instagram.data.repository.MyInfoRepository
-import com.mindorks.bootcamp.instagram.data.repository.PhotoRepository
 import com.mindorks.bootcamp.instagram.data.repository.UserRepository
 import com.mindorks.bootcamp.instagram.ui.base.BaseViewModel
 import com.mindorks.bootcamp.instagram.utils.common.Event
@@ -40,7 +39,7 @@ class ProfileViewModel(
 
     val name: LiveData<String> = Transformations.map(myInfo){ it.name }
     val tagline: LiveData<String> = Transformations.map(myInfo){ it.tagline}
-    val profileImage: LiveData<Image> = Transformations.map(myInfo){ Image(it.profilePicUrl, headers) }
+    val profileImage: LiveData<Image> = Transformations.map(myInfo){ Image(it.profilePicUrl.orEmpty(), headers) }
 
     //val postCount: MutableLiveData<Int> = MutableLiveData()
 
@@ -52,6 +51,7 @@ class ProfileViewModel(
                     .subscribeOn(schedulerProvider.io())
                     .subscribe(
                         {
+                            val d = it
                             myInfo.postValue(it)
                             loading.postValue(false)
                         },
@@ -90,5 +90,9 @@ class ProfileViewModel(
 
     fun onEditProfile(){
         lunchEditProfile.postValue(Event(emptyMap()))
+    }
+
+    fun onMyInfoUpdated(updatedMyInfo: MyInfo){
+        myInfo.postValue(updatedMyInfo)
     }
 }

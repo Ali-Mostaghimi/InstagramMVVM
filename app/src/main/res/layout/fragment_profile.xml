@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_tv_logout"
         app:srcCompat="@drawable/ic_profile_placeholder"
+        android:background="@drawable/grey_circle_background"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -28,7 +29,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/profile_tv_editProfile"
         app:layout_constraintStart_toStartOf="@+id/profile_tv_editProfile"
-        tools:text="10" />
+        android:text="9" />
 
     <TextView
         android:id="@+id/profile_tv_postLabel"
@@ -91,7 +92,7 @@
         style="@style/AppTheme.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

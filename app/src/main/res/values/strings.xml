@@ -55,8 +55,9 @@
     <string name="editProfile_etBio_hint">Bio</string>
     <string name="editProfile_tvPrivateInformation_text">Private Information</string>
     <string name="editProfile_etEmailAddress_hint">Email Address</string>
+    <string name="editProfile_name_empty_error">name can\'t be empty</string>
 
-<!--photo-->
+    <!--photo-->
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="try_again">Please try again</string>

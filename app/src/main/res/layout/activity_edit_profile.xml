@@ -33,6 +33,8 @@
         android:id="@+id/editProfile_content_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:isScrollContainer="true"
+        android:fillViewport="true"
         android:layout_marginTop="?attr/actionBarSize">
 
         <androidx.constraintlayout.widget.ConstraintLayout

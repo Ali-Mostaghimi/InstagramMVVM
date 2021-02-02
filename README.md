@@ -1,5 +1,5 @@
 # InstagramMVVM
-This is a project like instagram for practicing new technologies in android.
+This is a project similar to instagram for practicing new technologies in android.
 
 ## Screen-shots
 <p><img height="450" src="https://user-images.githubusercontent.com/52744015/106433810-edeb9780-6485-11eb-8c92-2bf66de1b9b5.png" />
